@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherAI - LSTM Forecast Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="icon">🌤</span>
+                <h1>WeatherAI</h1>
+            </div>
+            <p class="subtitle">Deep Learning Weather Forecasting Engine</p>
+        </header>
+
+        <main>
+            <section class="control-panel card">
+                <h3>🕹 Control Panel</h3>
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="regionSelect">🌍 Select Forecast Region</label>
+                        <select id="regionSelect">
+                            <option value="" disabled selected>Loading regions...</option>
+                        </select>
+                    </div>
+                    <button id="forecastBtn" class="btn-primary">🚀 Generate 24hr Forecast</button>
+                </div>
+            </section>
+
+            <div id="loading" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <p>Training LSTM Model & Generating Predictions...</p>
+            </div>
+
+            <div id="results" class="hidden">
+                <section class="metrics-row">
+                    <div class="metric-card card">
+                        <span class="label">Avg Temperature</span>
+                        <h2 id="avgTemp">-- °C</h2>
+                    </div>
+                    <div class="metric-card card">
+                        <span class="label">Avg Humidity</span>
+                        <h2 id="avgHumidity">-- %</h2>
+                    </div>
+                    <div class="metric-card card">
+                        <span class="label">Avg Wind Speed</span>
+                        <h2 id="avgWind">-- mph</h2>
+                    </div>
+                </section>
+
+                <section class="viz-row">
+                    <div class="viz-container card main-chart">
+                        <h3>📈 24-Hour Forecast Trends</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="forecastChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="viz-container card secondary-chart">
+                        <h3>📊 Forecast Distribution</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="distChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="data-table-container card">
+                    <h3>📄 Hour-by-Hour Forecast</h3>
+                    <div class="table-wrapper">
+                        <table id="forecastTable">
+                            <thead>
+                                <tr>
+                                    <th>Hour</th>
+                                    <th>Temp (°C)</th>
+                                    <th>Humidity (%)</th>
+                                    <th>Wind (mph)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="card">
+            <div class="footer-content">
+                <div>
+                    <h4>🛠 Technical Architecture</h4>
+                    <p>Multivariate LSTM (Long Short-Term Memory) Network.</p>
+                </div>
+                <div>
+                    <h4>Backend</h4>
+                    <p>FastAPI (Python) with Uvicorn.</p>
+                </div>
+                <div>
+                    <h4>Frontend</h4>
+                    <p>Vanilla JS & CSS + Chart.js.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

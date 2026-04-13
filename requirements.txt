@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+jinja2
+pandas
+numpy
+scikit-learn
+tensorflow
+pycountry-convert
+python-multipart
+matplotlib
+streamlit
